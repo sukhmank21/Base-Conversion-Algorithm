@@ -8,10 +8,10 @@ class Main
     public static void main(String[] args)
     {
         ArrayList<Integer> digits = new ArrayList<Integer>();
-        digits.add(2);
-        digits.add(2);
-        digits.add(2);
-        digits.add(2);
+        digits.add(1);
+        digits.add(1);
+        digits.add(1);
+        digits.add(1);
         System.out.println(IterativeBaseConverter(digits, 2));
         System.out.println(RecursiveBaseConverter(digits, 2));
     }
@@ -36,12 +36,15 @@ class Main
     {
         if (digits.size() > 1) // O(1)
         {
+            int digitsIndex = digits.get(0);
+            int digitsSize = digits.size();
             ArrayList<Integer> secDigits = digits;
             secDigits.remove(0);
+        
 
             //After the item at index 0 is removed(above line), the new digit at index 0 is multipled by base^ of place value, then 
             //Add the same procude for the next number at index 0 --> recursive
-            double doubNewNum = digits.get(0)*Math.pow(base, digits.size() - 1) + RecursiveBaseConverter(secDigits, base); //O(log(n))
+            double doubNewNum = digitsIndex*Math.pow(base, digitsSize - 1) + RecursiveBaseConverter(secDigits, base); //O(log(n))
             
             //Math.pow only took in doubles so had to set newNum to double then mamually convert to an int
             int newNum = (int)doubNewNum;
