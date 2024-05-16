@@ -16,9 +16,9 @@ class Main
         System.out.println(RecursiveBaseConverter(digits, 2));
     }
 
-    public static int IterativeBaseConverter(ArrayList<Integer> digits, int base) // O(log(n))
+    public static int IterativeBaseConverter(ArrayList<Integer> digits, int base) // Overall O(n*log(n))
     {
-        int newNum = 0;
+        int newNum = 0; //O(1)
         for  (int i=0; i < digits.size(); i++) // O(n)
         {
             //get the number from the digits ArrayList, multiplies it with the given base to the power of for that place value 
@@ -32,14 +32,15 @@ class Main
     }
 
     // Recursive base converter 
-    public static int RecursiveBaseConverter(ArrayList<Integer> digits, int base) // O(log(n))
+    public static int RecursiveBaseConverter(ArrayList<Integer> digits, int base) // Pverall: O(log(n))
     {
         if (digits.size() > 1) // O(1)
         {
-            int digitsIndex = digits.get(0);
-            int digitsSize = digits.size();
-            ArrayList<Integer> secDigits = digits;
-            secDigits.remove(0);
+           //Had to make these variables to save the size of the array and the place
+            int digitsIndex = digits.get(0); //O(1)
+            int digitsSize = digits.size(); //O(1)
+            ArrayList<Integer> secDigits = digits; //O(1)
+            secDigits.remove(0); //O(1)
         
 
             //After the item at index 0 is removed(above line), the new digit at index 0 is multipled by base^ of place value, then 
@@ -48,12 +49,12 @@ class Main
             
             //Math.pow only took in doubles so had to set newNum to double then mamually convert to an int
             int newNum = (int)doubNewNum;
-            return newNum;  
+            return newNum;  //O(1)
         }
 
         else
         {
-            return digits.get(0);
+            return digits.get(0); //O(1)
 
         }
 
